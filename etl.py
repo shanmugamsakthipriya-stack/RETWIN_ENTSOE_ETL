@@ -13,7 +13,7 @@ from config import *
 
 # --- Logging ---
 logging.basicConfig(
-    filename='entsoe_etl.log',
+    filename='etl.log',
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
 )
