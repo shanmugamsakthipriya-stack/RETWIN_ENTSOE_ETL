@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: Run ETL
       - name: Run ENTSOE ETL
-        run: python entsoe_etl.py
+        run: python etl.py
         env:
           # PostgreSQL / Azure
           AZURE_PG_HOST: ${{ secrets.AZURE_PG_HOST }}
@@ -52,5 +52,5 @@ jobs:
       - name: Upload ETL log
         uses: actions/upload-artifact@v3
         with:
-          name: entsoe-etl-log
-          path: entsoe_etl.log
+          name: etl-log
+          path: etl.log
