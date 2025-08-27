@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: Run ENTSOE ETL
       - name: Run ENTSOE ETL
-        run: python entsoe_etl.py
+        run: python etl.py
         env:
           # PostgreSQL / Azure
           AZURE_PG_HOST: ${{ secrets.AZURE_PG_HOST }}
