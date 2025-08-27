@@ -1,7 +1,7 @@
 import os
 
 # ENTSOE
-ENTSOE_TOKEN = os.environ.get("ENTSOE_TOKEN")
+SECURITY_TOKEN = os.environ.get("SECURITY_TOKEN")
 
 # Database
 AZURE_PG_HOST = os.environ.get("AZURE_PG_HOST")
