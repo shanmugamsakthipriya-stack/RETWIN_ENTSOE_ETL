@@ -1,4 +1,4 @@
-name: Daily RETWIN ETL
+name: Daily ENTSOE ETL
 
 # Run daily at 22:15 UTC
 on:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   run-etl:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest  # Use Ubuntu for consistency
 
     steps:
       # Step 1: Checkout the repository
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.13.7"
+          python-version: "3.10"
           check-latest: true
 
       # Step 3: Install dependencies
@@ -28,9 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Run ENTSOE ETL
+      # Step 4: Run ETL
       - name: Run ENTSOE ETL
-        run: python etl.py
+        run: python entsoe_etl.py
         env:
           # PostgreSQL / Azure
           AZURE_PG_HOST: ${{ secrets.AZURE_PG_HOST }}
@@ -47,3 +47,10 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+
+      # Step 5: Upload log file as artifact
+      - name: Upload ETL log
+        uses: actions/upload-artifact@v3
+        with:
+          name: entsoe-etl-log
+          path: entsoe_etl.log
