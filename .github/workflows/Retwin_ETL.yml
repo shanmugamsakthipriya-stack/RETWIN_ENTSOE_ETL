@@ -13,7 +13,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Setup Python
       - name: Set up Python
@@ -50,7 +50,7 @@ jobs:
 
       # Step 5: Upload log file as artifact
       - name: Upload ETL log
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: etl-log
           path: etl.log
